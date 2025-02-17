@@ -31,6 +31,15 @@ public class MUDController {
         // 2) Reads user input
         // 3) Calls handleInput(input)
         // 4) Terminates when 'running' is set to false
+        Scanner in = new Scanner(System.in);
+        while (running) {
+            System.out.println("Write command here >");
+            String input = in.nextLine().toLowerCase();
+            handleInput(input);
+            if(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) {
+                running = false;
+            }
+        }
     }
 
     /**
@@ -41,6 +50,42 @@ public class MUDController {
         // 1) Parse the input into a command and optionally an argument
         // 2) Use a switch/case (or if/else) to call the correct method below
         //    based on the command word
+        String[] commandAndArgument = input.split(" ");
+        String command = commandAndArgument[0];
+        String argument = commandAndArgument[1];
+        switch (command) {
+            case "lookAround":
+                 lookAround();
+                 break;
+            case "move":
+                if (argument == null) {
+                    System.out.println("Didn't find argument");
+                }
+                else {
+                    move(argument);
+                }
+                break;
+            case "pickUp":
+                if(argument == null) {
+                    System.out.println("Didn't find argument");
+                }
+                else {
+                    pickUp(argument);
+                }
+                break;
+            case "checkInventory":
+                checkInventory();
+                break;
+
+            case "help":
+                showHelp();
+                break;
+            case "exit":
+                running = false;
+                System.out.println("Game over");
+                break;
+        }
+
     }
 
     /**
