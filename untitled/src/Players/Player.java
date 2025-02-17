@@ -40,4 +40,13 @@ public class Player {
     public void setPlayerExperience(int playerExperience) {
         this.playerExperience = playerExperience;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                ", playerHealth=" + playerHealth +
+                ", playerExperience=" + playerExperience +
+                '}';
+    }
 }
