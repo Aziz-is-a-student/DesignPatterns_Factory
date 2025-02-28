@@ -8,17 +8,22 @@ import java.util.Scanner;
  * check inventory, show help, etc.
  */
 import Players.Player;
+import Factory.*;
+import NPCes.*;
+import Rooms.*;
 public class MUDController {
 
     private final Player player;
     private boolean running;
+    private Room room;
 
     /**
      * Constructs the controller with a reference to the current player.
      */
-    public MUDController(Player player) {
+    public MUDController(Player player,Room room) {
         // Initialize fields here (if needed)
         this.player = player;
+        this.room = room;
     }
 
     /**
@@ -93,6 +98,7 @@ public class MUDController {
      */
     private void lookAround() {
         // TODO: Print information about the player's current room
+        room.describe();
     }
 
     /**
