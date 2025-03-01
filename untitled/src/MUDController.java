@@ -108,6 +108,11 @@ public class MUDController {
         // TODO: Attempt to move to the next room in the given direction
         //       If there's no room in that direction, print an error message
         //       If successfully moved, describe the new room
+        if(direction.equalsIgnoreCase("left")|| direction.equalsIgnoreCase("right")|| direction.equalsIgnoreCase("back")|| direction.equalsIgnoreCase("forward")) {
+            System.out.println("You moved the direction " + direction);
+        }else {
+            System.out.println("Your direction isn't a valid direction");
+        }
     }
 
     /**
@@ -118,6 +123,17 @@ public class MUDController {
         // 1) Parse out the item name if 'arg' starts with "up "
         // 2) Check if that item exists in the current room
         // 3) Remove from room, add to player's inventory
+        String[] arguments = arg.split(" ");
+        String item = "";
+        if(arguments[0].equalsIgnoreCase("up")){
+            item = arguments[1];
+        }
+        if(item.isEmpty()){
+            System.out.println("Which item you want to pick up?");
+        }else{
+            System.out.println("You picked up " + item);
+            player.getInventory().add(item);
+        }
     }
 
     /**
@@ -126,6 +142,15 @@ public class MUDController {
     private void checkInventory() {
         // TODO: List the items in the player's inventory
         //       If no items, indicate that the inventory is empty
+        if(player.getInventory().size() == 0) {
+            System.out.println("Your inventory is empty");
+        }else{
+            System.out.println("You have " + player.getInventory().size() + " items");
+            int i = 1;
+            for(String item : player.getInventory()) {
+                System.out.print(i + ". " + item + " ");
+            }
+        }
     }
 
     /**
@@ -133,6 +158,12 @@ public class MUDController {
      */
     private void showHelp() {
         // TODO: Print a list of available commands and brief instructions
+        System.out.println("You can see the help menu");
+        System.out.println("lookAround:  describe room or place");
+        System.out.println("move argument direction : move towards the direction");
+        System.out.println("pickUp argument : pick up the item");
+        System.out.println("checkInventory argument : check the inventory");
+        System.out.println("help: show this help menu");
     }
 
     /**

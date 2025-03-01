@@ -7,18 +7,20 @@ import items.Item;*/
 
 package Players;
 
+import java.util.ArrayList;
+
 public class Player {
     private String playerName;
     private int playerHealth;
     private int playerExperience;
-   // private Inventory inventory;
+    private ArrayList<String> inventory;
 
     public Player(String playerName, int playerHealth, int playerExperience
-/*,Inventory inventory*/) {
+,ArrayList inventory) {
         this.playerName = playerName;
         this.playerHealth = playerHealth;
         this.playerExperience = playerExperience;
-        //this.inventory = inventory;
+        this.inventory = inventory;
     }
 
     public String getPlayerName() {
@@ -39,6 +41,14 @@ public class Player {
 
     public void setPlayerExperience(int playerExperience) {
         this.playerExperience = playerExperience;
+    }
+
+    public ArrayList<String> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<String> inventory) {
+        this.inventory = inventory;
     }
 
     @Override
